@@ -1,0 +1,15 @@
+/Users/alejandrogallegohenao/Desktop/DagranSolid/bin/Debug/net9.0/DagranSolid
+/Users/alejandrogallegohenao/Desktop/DagranSolid/bin/Debug/net9.0/DagranSolid.deps.json
+/Users/alejandrogallegohenao/Desktop/DagranSolid/bin/Debug/net9.0/DagranSolid.runtimeconfig.json
+/Users/alejandrogallegohenao/Desktop/DagranSolid/bin/Debug/net9.0/DagranSolid.dll
+/Users/alejandrogallegohenao/Desktop/DagranSolid/bin/Debug/net9.0/DagranSolid.pdb
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.AssemblyInfoInputs.cache
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.AssemblyInfo.cs
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.csproj.CoreCompileInputs.cache
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.sourcelink.json
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.dll
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/refint/DagranSolid.dll
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.pdb
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/DagranSolid.genruntimeconfig.cache
+/Users/alejandrogallegohenao/Desktop/DagranSolid/obj/Debug/net9.0/ref/DagranSolid.dll
