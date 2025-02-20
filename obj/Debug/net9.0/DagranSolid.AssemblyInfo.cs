@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DagranSolid")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbc15b112ab45ab46feb677a388a377a60475790")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2487514aa166ceccd8715c7b5fe982a8d450cd28")]
 [assembly: System.Reflection.AssemblyProductAttribute("DagranSolid")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DagranSolid")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

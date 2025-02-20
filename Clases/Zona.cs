@@ -2,24 +2,26 @@ using System;
 
 public class Zona
 {
-    // Atributos de la clase
-    public double nivelDelMar{ get; set; }
-    public int habitantes{ get; set; }
-    public double distanciaRios{ get; set; }
-    public double area{ get; set; }
-    public string ubicacion { get; set; }
-    public string geografia { get; set; }
-    
+    public double NivelDelMar { get; set; }
+    public int Habitantes { get; set; }
+    public double DistanciaRios { get; set; }
+    public double Area { get; set; }
+    public string Ubicacion { get; set; }
+    public string Geografia { get; set; }
+    public bool EnRiesgo { get; private set; } 
 
-    // Constructor de la clase
-    public Zona(double nivelDelMar, int habitantes, double distanciaRios, double area, String ubicacion, String geografia)
+    public Zona(double nivelDelMar, int habitantes, double distanciaRios, double area, string ubicacion, string geografia)
     {
-        this.nivelDelMar = nivelDelMar;
-        this.habitantes = habitantes;
-        this.distanciaRios = distanciaRios;
-        this.area=area;
-        this.ubicacion=ubicacion;
-        this.geografia=geografia;
+        NivelDelMar = nivelDelMar;
+        Habitantes = habitantes;
+        DistanciaRios = distanciaRios;
+        Area = area;
+        Ubicacion = ubicacion;
+        Geografia = geografia;
     }
 
+    public void ActualizarRiesgo(bool riesgo)
+    {
+        EnRiesgo = riesgo;
+    }
 }
