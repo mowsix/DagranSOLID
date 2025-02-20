@@ -1,4 +1,9 @@
 using System;
+using Interfaces;
+
+
+namespace Implementaciones{
+
 
 public class GeneradorAleatorioImplementacion : IGeneradorAleatorio
 {
@@ -18,4 +23,5 @@ public class GeneradorAleatorioImplementacion : IGeneradorAleatorio
     {
         return opciones[_random.Next(opciones.Length)];
     }
+}
 }

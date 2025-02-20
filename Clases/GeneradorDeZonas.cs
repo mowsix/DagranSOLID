@@ -1,3 +1,6 @@
+using System;
+using Interfaces;
+using Implementaciones;
 public class GeneradorDeZonas
 {
     private readonly IGeneradorAleatorio _generadorAleatorio;
@@ -7,7 +10,7 @@ public class GeneradorDeZonas
     private static readonly double minNivelDelMar = 1.0, maxNivelDelMar = 3000.0;
     private static readonly int minHabitantes = 1000, maxHabitantes = 1000000;
     private static readonly double minDistanciaRios = 1.0, maxDistanciaRios = 2000.0;
-    private static readonly double minArea = 1.0, maxArea = 50.0;
+    private static readonly double minArea = 1.0, maxArea = 500.0;
     private static readonly string[] ubicaciones = { "Rural", "Urbana" };
     private static readonly string[] geografias = { "Montañosa", "Costera" };
 
