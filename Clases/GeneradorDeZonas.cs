@@ -8,8 +8,6 @@ public class GeneradorDeZonas
 {
     private readonly IGeneradorAleatorio _generadorAleatorio;
     private readonly IAnalizadorDeRiesgo _analizadorDeRiesgo;
-
-    // Rango de valores como atributos de la clase
     public double MinNivelDelMar { get; }
     public double MaxNivelDelMar { get; }
     public int MinHabitantes { get; }
@@ -25,14 +23,13 @@ public class GeneradorDeZonas
     {
         _generadorAleatorio = generadorAleatorio;
         _analizadorDeRiesgo = analizadorDeRiesgo;
-
-        // Inicializar rangos como atributos de la clase
+        
         MinNivelDelMar = 1.0;
         MaxNivelDelMar = 3000.0;
         MinHabitantes = 1000;
         MaxHabitantes = 1000000;
         MinDistanciaRios = 1.0;
-        MaxDistanciaRios = 2000.0;
+        MaxDistanciaRios = 200.0;
         MinArea = 1.0;
         MaxArea = 500.0;
         Ubicaciones = new string[] { "Rural", "Urbana" };

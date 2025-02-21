@@ -6,8 +6,8 @@ public class Zona
     public double area { get; }
     public string geografia { get; }
     public string ubicacion { get; }
-    public bool enRiesgo { get; private set; }
-    public string tipoInundacion { get; private set; }
+    protected bool enRiesgo { get; private set; }
+    protected string tipoInundacion { get; private set; }
 
     public Zona(double nivelDelMar, int habitantes, double distanciaRios, double area, string ubicacion, string geografia)
     {

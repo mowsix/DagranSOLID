@@ -10,26 +10,19 @@ namespace Implementaciones
         private readonly List<ITipoInundacion> _tiposInundacion;
         private readonly ICalculadorDensidad _calculadorDensidad;
 
-        // Umbrales con los mismos nombres y tipos de datos que en la interfaz
-        public int UmbralNivelDelMar { get; }
-        public int UmbralDistanciaRios { get; }
-        public int UmbralDensidad { get; }
+        public readonly int UmbralNivelDelMar;
+        public readonly int UmbralDistanciaRios;
+        public readonly int UmbralDensidad;
 
-        public AnalizadorDeRiesgoImplementacion(ICalculadorDensidad calculadorDensidad)
+        public AnalizadorDeRiesgoImplementacion(ICalculadorDensidad calculadorDensidad, List<ITipoInundacion> tiposInundacion)
         {
-            _calculadorDensidad = calculadorDensidad;
+            _calculadorDensidad = calculadorDensidad ?? throw new ArgumentNullException(nameof(calculadorDensidad));
+            _tiposInundacion = tiposInundacion ?? throw new ArgumentNullException(nameof(tiposInundacion));
 
-            // Inicializar umbrales con los tipos de datos correctos
+            // Definiendo los umbrales como atributos que no se modifican
             UmbralNivelDelMar = 10;
             UmbralDistanciaRios = 50;
             UmbralDensidad = 100;
-
-            _tiposInundacion = new List<ITipoInundacion>
-            {
-                new InundacionCostera(UmbralNivelDelMar),
-                new InundacionUrbana(UmbralDensidad, _calculadorDensidad),
-                new InundacionFluvial(UmbralDistanciaRios)
-            };
         }
 
         public bool EstaEnRiesgo(Zona zona)

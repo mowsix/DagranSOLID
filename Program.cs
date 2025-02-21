@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Interfaces;
-using Implementaciones; // Ensure this namespace contains 'AnalizadorDeRiesgoImplementacion'
+using Implementaciones;
 
 class Program
 {
@@ -17,13 +17,15 @@ class Program
         IGeneradorAleatorio generadorAleatorio = new GeneradorAleatorioImplementacion();
         ICalculadorDensidad calculadorDensidad = new CalculadorDensidadImplementacion();
 
-        IAnalizadorDeRiesgo analizadorDeRiesgo = new AnalizadorDeRiesgoImplementacion(calculadorDensidad);
+        // ✅ Llamamos al método estático en lugar de instanciar ReglasDeNegocio
+        IAnalizadorDeRiesgo analizadorDeRiesgo = ReglasDeNegocio.CrearAnalizadorDeRiesgo(calculadorDensidad);
+
         GeneradorDeZonas generadorDeZonas = new GeneradorDeZonas(generadorAleatorio, analizadorDeRiesgo);
 
         // Generamos zonas
         List<Zona> zonas = generadorDeZonas.GenerarZonas(cantidadZonas);
 
-        // Imprimimos las zonas
+        // Imprimimos las zonas generadas
         Console.WriteLine("\nZonas generadas:");
         foreach (var zona in zonas)
         {
