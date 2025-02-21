@@ -1,33 +1,46 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Interfaces;
 
-namespace Implementaciones{
-
-public class AnalizadorDeRiesgoImplementacion : IAnalizadorDeRiesgo
+namespace Implementaciones
 {
-
-    private readonly ICalculadorDensidad _calculadorDensidad;
-    private readonly int umbralNivelDelMar = 10;
-    private readonly int umbralDistanciaRios = 50;
-    private readonly int umbralDensidad = 100;
-
-    public AnalizadorDeRiesgoImplementacion(ICalculadorDensidad calculadorDensidad)
+    public class AnalizadorDeRiesgoImplementacion : IAnalizadorDeRiesgo
     {
-        _calculadorDensidad = calculadorDensidad;
-    }
+        private readonly List<ITipoInundacion> _tiposInundacion;
+        private readonly ICalculadorDensidad _calculadorDensidad;
 
-    public bool EstaEnRiesgo(Zona zona)
-    {
-        double densidad = _calculadorDensidad.CalcularDensidad(zona.habitantes, zona.area);
-        if (zona.nivelDelMar > umbralNivelDelMar && zona.geografia=="Costera")
+        // Umbrales con los mismos nombres y tipos de datos que en la interfaz
+        public int UmbralNivelDelMar { get; }
+        public int UmbralDistanciaRios { get; }
+        public int UmbralDensidad { get; }
+
+        public AnalizadorDeRiesgoImplementacion(ICalculadorDensidad calculadorDensidad)
         {
-            return true;
-        } else if ( densidad >= umbralDensidad && zona.geografia=="Urbana"){
-            return true;
-        } else if(zona.distanciaRios < umbralDistanciaRios){
-            return true;
+            _calculadorDensidad = calculadorDensidad;
+
+            // Inicializar umbrales con los tipos de datos correctos
+            UmbralNivelDelMar = 10;
+            UmbralDistanciaRios = 50;
+            UmbralDensidad = 100;
+
+            _tiposInundacion = new List<ITipoInundacion>
+            {
+                new InundacionCostera(UmbralNivelDelMar),
+                new InundacionUrbana(UmbralDensidad, _calculadorDensidad),
+                new InundacionFluvial(UmbralDistanciaRios)
+            };
         }
-        return false;
+
+        public bool EstaEnRiesgo(Zona zona)
+        {
+            return _tiposInundacion.Any(tipo => tipo.Aplica(zona));
+        }
+
+        public string DeterminarTipoInundacion(Zona zona)
+        {
+            var tipo = _tiposInundacion.FirstOrDefault(t => t.Aplica(zona));
+            return tipo != null ? tipo.ObtenerTipo() : "Ninguno";
+        }
     }
-}
 }

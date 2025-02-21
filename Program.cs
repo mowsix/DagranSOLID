@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Interfaces;
-using Implementaciones;
+using Implementaciones; // Ensure this namespace contains 'AnalizadorDeRiesgoImplementacion'
 
 class Program
 {
@@ -14,9 +14,9 @@ class Program
             return;
         }
 
-        // Usa los nombres correctos de las clases
         IGeneradorAleatorio generadorAleatorio = new GeneradorAleatorioImplementacion();
         ICalculadorDensidad calculadorDensidad = new CalculadorDensidadImplementacion();
+
         IAnalizadorDeRiesgo analizadorDeRiesgo = new AnalizadorDeRiesgoImplementacion(calculadorDensidad);
         GeneradorDeZonas generadorDeZonas = new GeneradorDeZonas(generadorAleatorio, analizadorDeRiesgo);
 

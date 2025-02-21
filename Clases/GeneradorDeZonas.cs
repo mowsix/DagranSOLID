@@ -1,23 +1,42 @@
 using System;
 using Interfaces;
 using Implementaciones;
+using System;
+using System.Collections.Generic;
+
 public class GeneradorDeZonas
 {
     private readonly IGeneradorAleatorio _generadorAleatorio;
     private readonly IAnalizadorDeRiesgo _analizadorDeRiesgo;
 
-    // Rango de valores
-    private static readonly double minNivelDelMar = 1.0, maxNivelDelMar = 3000.0;
-    private static readonly int minHabitantes = 1000, maxHabitantes = 1000000;
-    private static readonly double minDistanciaRios = 1.0, maxDistanciaRios = 2000.0;
-    private static readonly double minArea = 1.0, maxArea = 500.0;
-    private static readonly string[] ubicaciones = { "Rural", "Urbana" };
-    private static readonly string[] geografias = { "Montañosa", "Costera" };
+    // Rango de valores como atributos de la clase
+    public double MinNivelDelMar { get; }
+    public double MaxNivelDelMar { get; }
+    public int MinHabitantes { get; }
+    public int MaxHabitantes { get; }
+    public double MinDistanciaRios { get; }
+    public double MaxDistanciaRios { get; }
+    public double MinArea { get; }
+    public double MaxArea { get; }
+    public string[] Ubicaciones { get; }
+    public string[] Geografias { get; }
 
     public GeneradorDeZonas(IGeneradorAleatorio generadorAleatorio, IAnalizadorDeRiesgo analizadorDeRiesgo)
     {
         _generadorAleatorio = generadorAleatorio;
         _analizadorDeRiesgo = analizadorDeRiesgo;
+
+        // Inicializar rangos como atributos de la clase
+        MinNivelDelMar = 1.0;
+        MaxNivelDelMar = 3000.0;
+        MinHabitantes = 1000;
+        MaxHabitantes = 1000000;
+        MinDistanciaRios = 1.0;
+        MaxDistanciaRios = 2000.0;
+        MinArea = 1.0;
+        MaxArea = 500.0;
+        Ubicaciones = new string[] { "Rural", "Urbana" };
+        Geografias = new string[] { "Montañosa", "Costera" };
     }
 
     public List<Zona> GenerarZonas(int cantidad)
@@ -27,15 +46,18 @@ public class GeneradorDeZonas
         for (int i = 0; i < cantidad; i++)
         {
             Zona zona = new Zona(
-                _generadorAleatorio.GenerarNumeroDecimal(minNivelDelMar, maxNivelDelMar),
-                _generadorAleatorio.GenerarNumeroEntero(minHabitantes, maxHabitantes),
-                _generadorAleatorio.GenerarNumeroDecimal(minDistanciaRios, maxDistanciaRios),
-                _generadorAleatorio.GenerarNumeroDecimal(minArea, maxArea),
-                _generadorAleatorio.SeleccionarElementoAleatorio(ubicaciones),
-                _generadorAleatorio.SeleccionarElementoAleatorio(geografias)
+                _generadorAleatorio.GenerarNumeroDecimal(MinNivelDelMar, MaxNivelDelMar),
+                _generadorAleatorio.GenerarNumeroEntero(MinHabitantes, MaxHabitantes),
+                _generadorAleatorio.GenerarNumeroDecimal(MinDistanciaRios, MaxDistanciaRios),
+                _generadorAleatorio.GenerarNumeroDecimal(MinArea, MaxArea),
+                _generadorAleatorio.SeleccionarElementoAleatorio(Ubicaciones),
+                _generadorAleatorio.SeleccionarElementoAleatorio(Geografias)
             );
 
-            zona.ActualizarRiesgo(_analizadorDeRiesgo.EstaEnRiesgo(zona));
+            bool riesgo = _analizadorDeRiesgo.EstaEnRiesgo(zona);
+            string tipoInundacion = _analizadorDeRiesgo.DeterminarTipoInundacion(zona);
+
+            zona.ActualizarRiesgo(riesgo, tipoInundacion);
             zonas.Add(zona);
         }
 

@@ -1,4 +1,3 @@
-
 namespace Interfaces{
 public interface IGeneradorAleatorio
 {
@@ -6,5 +5,4 @@ public interface IGeneradorAleatorio
     int GenerarNumeroEntero(int min, int max);
     string SeleccionarElementoAleatorio(string[] opciones);
 }
-
 }
